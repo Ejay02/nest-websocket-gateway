@@ -7,7 +7,11 @@ import {
 } from '@nestjs/websockets';
 import { Server } from 'socket.io';
 
-@WebSocketGateway() //configure cors
+@WebSocketGateway({
+  cors: {
+    origin: ['http://localhost:3000'],
+  },
+}) //configure cors
 export class MyGateway implements OnModuleInit {
   @WebSocketServer()
   server: Server;
